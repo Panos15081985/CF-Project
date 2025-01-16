@@ -1,0 +1,104 @@
+<div class="container">
+     <h2 class="text-center text-danger mt-4">Προπονητές</h2>
+
+     <table class="table table-bordered table-striped ">
+          <thead>
+               <tr>
+                    <th>Όνομα</th>
+                    <th>Επώνυμο</th>
+                    <th>Ρόλος</th>
+                    <th class="text-center">Ενέργειες</th>
+               </tr>
+          </thead>
+          <tbody>
+               <ng-container *ngFor="let coach of filteredCoaches; let i = index">
+                    <tr>
+                         <td>{{ coach.firstname }}</td>
+                         <td>{{ coach.lastname }}</td>
+                         <td>{{ coach.role }}</td>
+                         <td class="text-center">
+                              <button class="btn btn-sm btn-outline-danger me-1" (click)="deleteCourse(coach.uuid, i)">
+                                   <i class="bi bi-trash"></i>
+                              </button>
+                              <button class="btn btn-sm btn-outline-dark" (click)="editCourse(i)">
+                                   <i class="bi bi-pencil-square"></i>
+                              </button>
+                         
+                              <button
+                                   class="btn btn-sm btn-outline-secondary ms-2"
+                                   (click)="toggleExpand(i)"
+                              >
+                                   <i class="bi" 
+                                   [class.bi-chevron-down]="expandedCoach !== i" 
+                                   [class.bi-chevron-up]="expandedCoach === i"></i>
+                              </button>
+                         </td>
+                    </tr>
+
+                    <tr *ngIf="expandedCoach === i">
+                         <td colspan="4" class="expanded-content">
+                              <div>
+                                   <h5 class="text-danger">Στοιχεία Επικοινωνίας:</h5>
+                                   <div class="row contact-info">
+                                        <div class="col-4">
+                                             <strong>Email:</strong> {{ coach.contactDetailsReadOnlyDTO.email }}
+                                        </div>
+                                        <div class="col-4">
+                                             <strong>Τηλέφωνο:</strong> {{ coach.contactDetailsReadOnlyDTO.phoneNumber }}
+                                        </div>
+                                        <div class="col-4">
+                                             <strong>Οδός:</strong> {{ coach.contactDetailsReadOnlyDTO.road }}
+                                        </div>
+                                   </div>
+                                   <div class="row mt-2 contact-info">
+                                        <div class="col-4">
+                                             <strong>Αριθμός Οδού:</strong> {{ coach.contactDetailsReadOnlyDTO.road_number }}
+                                        </div>
+                                        <div class="col-4">
+                                             <strong>Πόλη:</strong> {{ coach.contactDetailsReadOnlyDTO.city }}
+                                        </div>
+                                        <div class="col-4">
+                                             <strong>Ταχυδρομικός Κώδικας:</strong> {{ coach.contactDetailsReadOnlyDTO.postalCode }}
+                                        </div>
+                                   </div>
+                              </div>
+                         </td>
+                    </tr>
+          
+                    <tr *ngIf="expandedCoach === i" >
+                         <td colspan="4" >
+                              <div  *ngFor="let course of coach.courses;" class="d-inline-flex flex-wrap me-2">
+                                   <div class="me-2">
+                                        <h5>Μαθημα:</h5>
+                                        <ul>
+                                             <li>{{course.name}}</li>
+                                             <li>{{course.day}}</li>
+                                             <li>{{course.startTime}}</li>
+                                             <li>{{course.endTime}}</li>
+                                        </ul>
+                                   </div>
+
+                              </div>
+                        
+                         </td>
+                    </tr>
+               </ng-container>
+          </tbody>
+     </table>
+
+     <div class="pagination-controls text-center mt-3">
+          <button 
+            class="btn btn-outline-secondary me-2" 
+            (click)="goToPage(page - 1)" 
+            [disabled]="page === 0">
+            <i class="bi bi-chevron-left"></i> Προηγούμενη
+          </button>
+          <span>Σελίδα {{ page + 1 }} από {{ totalPages }}</span>
+          <button 
+            class="btn btn-outline-secondary ms-2" 
+            (click)="goToPage(page + 1)" 
+            [disabled]="page === totalPages - 1">
+            Επόμενη <i class="bi bi-chevron-right"></i>
+          </button>
+     </div>
+</div>

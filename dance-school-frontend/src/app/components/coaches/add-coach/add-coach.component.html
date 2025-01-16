@@ -1,0 +1,175 @@
+<div class="container mt-5">
+    <div class="card bg-light">
+        <div class="card-header text-center" style="color: rgb(220, 53, 69);">
+        <h2>Εγγραφή Προπονητή</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="coachForm" (ngSubmit)="onSubmit()">
+               <div class="row mb-3">
+                    <div class="col-md-6">
+                         <label for="firstname" class="form-label">Όνομα</label>
+                         <input
+                         id="firstname"
+                         type="text"
+                         formControlName="firstname"
+                         class="form-control border-dark"
+                         />
+                         <div
+                              *ngIf="coachForm.get('firstname')?.touched && coachForm.get('firstname')?.invalid"
+                              class="text-danger"
+                              >
+                              Το όνομα είναι υποχρεωτικό.
+                         </div>
+                    </div>
+                    <div class="col-md-6">
+                         <label for="lastname" class="form-label">Επώνυμο</label>
+                         <input
+                         id="lastname"
+                         type="text"
+                         formControlName="lastname"
+                         class="form-control border-dark"
+                         />
+                         <div
+                              *ngIf="coachForm.get('lastname')?.touched && coachForm.get('lastname')?.invalid"
+                              class="text-danger"
+                              >
+                              Το επώνυμο είναι υποχρεωτικό.
+                         </div>
+                    </div>
+               </div>
+
+               <div class="row mb-3">
+                    <div class="col-md-6">
+                         <label for="username" class="form-label">Όνομα Χρήστη</label>
+                         <input
+                         id="username"
+                         type="text"
+                         formControlName="username"
+                         class="form-control border-dark"
+                         />
+                         <div
+                              *ngIf="coachForm.get('username')?.touched && coachForm.get('username')?.invalid"
+                              class="text-danger"
+                              >
+                              Το όνομα χρήστη είναι υποχρεωτικό.
+                         </div>
+                    </div>
+                    <div class="col-md-6">
+                         <label for="password" class="form-label">Κωδικός</label>
+                         <input
+                         id="password"
+                         type="password"
+                         formControlName="password"
+                         class="form-control border-dark"
+                         />
+                         <div
+                         *ngIf="coachForm.get('password')?.touched && coachForm.get('password')?.invalid"
+                         class="text-danger"
+                         >
+                         Ο κωδικός είναι υποχρεωτικός.
+                         </div>
+                    </div>
+               </div>
+
+               <div class="mb-3">
+                    <label for="role" class="form-label">Ρόλος</label>
+                    <select
+                         id="role"
+                         formControlName="role"
+                         class="form-select border-dark"
+                    >
+                         <option value="" disabled selected>Επιλέξτε ρόλο</option>
+                         <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                    </select>
+                    <div
+                         *ngIf="coachForm.get('role')?.touched && coachForm.get('role')?.invalid"
+                         class="text-danger"
+                    >
+                         Ο ρόλος είναι υποχρεωτικός.
+                    </div>
+               </div>
+
+               <h5 class="text-center" style="color: rgb(220, 53, 69);">Στοιχεία Επικοινωνίας</h5>
+
+               <div formGroupName="contactDetailsInsertDTO">
+
+                    <div class="row mb-3">
+                         <div class="col-md-6">
+                              <label for="city" class="form-label">Πόλη</label>
+                              <input
+                              id="city"
+                              type="text"
+                              formControlName="city"
+                              class="form-control border-dark"
+                              placeholder="Εισάγετε πόλη"
+                              />
+                         </div>
+                         <div class="col-md-6">
+                              <label for="road_number" class="form-label">Αριθμός Οδού</label>
+                              <input
+                              id="road_number"
+                              type="text"
+                              formControlName="road_number"
+                              class="form-control border-dark"
+                              />
+                         </div>
+                    </div>
+
+                    <div class="row mb-3">
+                         <div class="col-md-6">
+                              <label for="road" class="form-label">Οδός</label>
+                              <input
+                              id="road"
+                              type="text"
+                              formControlName="road"
+                              class="form-control border-dark"
+                              />
+                         </div>
+                         <div class="col-md-6">
+                              <label for="postalCode" class="form-label">Ταχυδρομικός Κώδικας</label>
+                              <input
+                              id="postalCode"
+                              type="text"
+                              formControlName="postalCode"
+                              class="form-control border-dark"
+                              />
+                         </div>
+                    </div>
+
+                    <div class="row mb-3">
+                         <div class="col-md-6">
+                              <label for="email" class="form-label">Email</label>
+                              <input
+                              id="email"
+                              type="email"
+                              formControlName="email"
+                              class="form-control border-dark"
+                              />
+                         </div>
+                         <div class="col-md-6">
+                              <label for="phoneNumber" class="form-label">Αριθμός Τηλεφώνου</label>
+                              <input
+                              id="phoneNumber"
+                              type="text"
+                              formControlName="phoneNumber"
+                              class="form-control border-dark"
+                              />
+                         </div>
+                    </div>
+               </div>
+
+               <div class="text-center">
+                    <button
+                         type="submit"
+                         class="btn"
+                         [disabled]="coachForm.invalid"
+                         style="background-color: rgb(220, 53, 69); color: white;"
+                    >
+                         Υποβολή
+                    </button>
+               </div>
+          </form>
+        </div>
+    </div>
+</div>
+  

@@ -1,0 +1,56 @@
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+    background-color: #fff;
+    padding: 15px 20px;
+  }
+  
+  .modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(220, 53, 69); /* Κόκκινο χρώμα για τον τίτλο */
+    margin: 0;
+  }
+  
+  .modal-body {
+    font-size: 16px;
+    color: #333; /* Σκούρο γκρι για το κείμενο */
+    padding: 30px 20px;
+  }
+  
+  .modal-footer {
+    background-color: #fff;
+    border-top: 1px solid #dee2e6;
+    padding: 10px 20px;
+  }
+  
+  .modal-footer .btn {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Κουμπί "OK" */
+  .modal-footer .btn-danger {
+    background-color: rgb(220, 53, 69); /* Κόκκινο φόντο */
+    color: white;
+    border: none;
+  }
+  
+  .modal-footer .btn-danger:hover {
+    background-color: rgb(183, 28, 45); /* Σκούρο κόκκινο hover */
+    color: white;
+  }
+  
+  /* Κουμπί "Ακύρωση" */
+  .modal-footer .btn-outline-danger {
+    background-color: white;
+    color: rgb(220, 53, 69);  /* Κόκκινο για το "Ακύρωση" */
+    border: 1px solid rgb(220, 53, 69);
+  }
+  
+  .modal-footer .btn-outline-danger:hover {
+    background-color: rgb(240, 240, 240);  /* Απαλό γκρι hover */
+    color: rgb(183, 28, 45); /* Σκούρο κόκκινο hover */
+  }

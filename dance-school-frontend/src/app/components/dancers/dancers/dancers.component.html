@@ -1,0 +1,198 @@
+
+<div class="container mt-4">
+     <!-- Φίλτρα Αναζήτησης -->
+      <div class="mb-4 p-3 bg-light border rounded">
+          <form [formGroup]="filtersForm" (ngSubmit)="onSubmit()">
+               <h4 class="text-center text-danger">Αναζήτηση Χορευτών</h4>
+               <div class="row">
+                    <!-- Φιλτράρισμα με Ημέρα -->
+                    <div class="col-md-4 mb-2">
+                         <label for="course" class="form-label">Φιλτράρισμα με Μάθημα</label>
+                         <select
+                         id="course"
+                         class="form-select"
+                         formControlName="courseId"
+                         >
+                         <option value="">Όλα τα Μαθήματα</option>
+                         <option *ngFor="let course of courses" [value]="course.id">
+                              {{ course.name }} {{course.day}}
+                         </option>
+                         </select>
+                    </div>
+     
+                    <div class="col-md-4 mb-2">
+                         <label for="nameFilter" class="form-label">Φιλτράρισμα με Επώνυμο</label>
+                         <input 
+                         type="text"
+                         class="form-control"
+                         formControlName="lastname"
+                         />
+                    </div>
+
+                    
+                    <div class="col-md-4 mb-2">
+                         <label for="dateOfBirth" class="form-label">Φιλτράρισμα με Ημερομηνία Γέννησης</label>
+                         <input 
+                         id="dateOfBirth"
+                         type="date"
+                         class="form-control"
+                         formControlName="dateOfBirth"
+                         />
+                    </div>
+               </div>
+               <div class="row my-3">
+                    <div class="col-12">
+                      <label class="mb-4">
+                        Φιλτράρισμα με Ημερομηνία Διάκοπης Συμβολαίου
+                      </label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="contract_end_from" class="form-label">Από:</label>
+                      <input
+                        type="date"
+                        id="contract_end_from"
+                        class="form-control"
+                        formControlName="contract_end_from"
+                      />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="contract_end_until" class="form-label">Μέχρι:</label>
+                      <input
+                        type="date"
+                        id="contract_end_until"
+                        class="form-control"
+                        formControlName="contract_end_until"
+                      />
+                    </div>
+                    <div class="col-md-4 d-flex align-items-center justify-content-center mb-3">
+                         <div class="form-check form-check-inline d-flex flex-column align-items-center">
+                              <label for="isUnder18" class="form-check-label mt-2">Χορευτές κάτω των 18 ετών</label>
+                              <input
+                                   id="isUnder18"
+                                   class="form-check-input filter-input-checkbox"
+                                   type="checkbox"
+                                   formControlName="isUnder18"
+                              />
+                         
+                         </div>
+                    </div>
+               </div>
+               <div class="text-center">
+                    <button
+                         type="submit"
+                         class="btn"
+                         style="background-color: rgb(220, 53, 69); color: white;"
+                    >
+                         Αναζήτηση
+                    </button>
+               </div>
+          </form>
+     </div>
+     <div class="table-responsive">
+          <h2 class="text-center mb-4 title-custom">Χορευτές</h2>
+        
+          <table class="table table-bordered table-striped table-hover custom-table">
+               <thead class="table-danger">
+                    <tr>
+                    <th>Όνομα</th>
+                    <th>Επώνυμο</th>
+                    <th>Ημερομηνία Γέννησης</th>
+                    <th class="text-center">Ενέργειες</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    <ng-container *ngFor="let dancer of filteredDancers; let i = index">
+                         <tr>
+                              <td>{{ dancer.firstname }}</td>
+                              <td>{{ dancer.lastname }}</td>
+                              <td>{{ dancer.dateOfBirth}}</td>
+                              <td class="text-center">
+                              <button class="btn btn-sm btn-outline-danger me-1" (click)="deleteDancer(dancer.uuid,i)">
+                              <i class="bi bi-trash"></i>
+                              </button>
+                              <button class="btn btn-sm btn-outline-dark" (click)="editDancer(i)">
+                              <i class="bi bi-pencil-square"></i>
+                              </button>
+                              
+                              <button
+                              class="btn btn-sm btn-outline-secondary ms-2"
+                              (click)="toggleExpand(i)"
+                              >
+                              <i class="bi" 
+                                   [class.bi-chevron-down]="expandedCoach !== i" 
+                                   [class.bi-chevron-up]="expandedCoach === i"></i>
+                              </button>
+                              </td>
+                         </tr>
+               
+                         <tr *ngIf="expandedCoach === i">
+                              <td colspan="4" class="expanded-content">
+                                   <div>
+                                        <h5>Στοιχεία Επικοινωνίας:</h5>
+                                        <div class="row">
+                                             <div class="col-4">
+                                                  <strong>Email:</strong> {{ dancer.contactDetailsReadOnlyDTO.email }}
+                                             </div>
+                                             <div class="col-4">
+                                                  <strong>Τηλέφωνο:</strong> {{ dancer.contactDetailsReadOnlyDTO.phoneNumber }}
+                                             </div>
+                                             <div class="col-4">
+                                                  <strong>Οδός:</strong> {{ dancer.contactDetailsReadOnlyDTO.road }}
+                                             </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                             <div class="col-4">
+                                                  <strong>Αριθμός Οδού:</strong> {{ dancer.contactDetailsReadOnlyDTO.road_number }}
+                                             </div>
+                                             <div class="col-4">
+                                                  <strong>Πόλη:</strong> {{ dancer.contactDetailsReadOnlyDTO.city }}
+                                             </div>
+                                             <div class="col-4">
+                                                  <strong>Ταχυδρομικός Κώδικας:</strong> {{ dancer.contactDetailsReadOnlyDTO.postalCode }}
+                                             </div>
+                                        </div>
+                                        <div *ngIf="dancer.contractEnd" class="row mt-2">
+                                             <div class="col-4">
+                                                  <strong>Διάκοπης Συμβολαίου</strong> {{ dancer.contractEnd }}
+                                             </div>
+
+                                        </div>
+                                   </div>
+                              </td>
+                         </tr>
+                         
+                         <tr *ngIf="expandedCoach === i" >
+                              <td  *ngFor="let course of dancer.courseList;" colspan="2" class="expanded-content">
+                                   <div>
+                                        <h5>Μαθημα:</h5>
+                                        <ul>
+                                             <li>{{course.name}}</li>
+                                             <li>{{course.day}}</li>
+                                             <li>{{course.startTime}}</li>
+                                             <li>{{course.endTime}}</li>
+                                        </ul>
+                                   </div>
+                              </td>
+                         </tr>
+                    </ng-container>
+               </tbody>
+          </table>
+          <div class="pagination-controls text-center mt-3">
+               <button 
+                 class="btn btn-outline-secondary me-2" 
+                 (click)="goToPage(page - 1)" 
+                 [disabled]="page === 0">
+                 <i class="bi bi-chevron-left"></i> Προηγούμενη
+               </button>
+               <span>Σελίδα {{ page + 1 }} από {{ totalPages }}</span>
+               <button 
+                 class="btn btn-outline-secondary ms-2" 
+                 (click)="goToPage(page + 1)" 
+                 [disabled]="page === totalPages - 1">
+                 Επόμενη <i class="bi bi-chevron-right"></i>
+               </button>
+          </div>
+     </div>
+</div>
+ 
+                    

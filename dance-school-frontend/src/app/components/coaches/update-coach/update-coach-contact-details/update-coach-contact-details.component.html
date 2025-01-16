@@ -1,0 +1,134 @@
+<div class="container mt-3">
+     <h2 class="text-center mb-4" style="color: rgb(220, 53, 69);">Ενημέρωση Προπονητή</h2>
+      
+     <form [formGroup]="coachForm" (ngSubmit)="onSubmit()">
+      
+          <div class="mb-3">
+               <label for="firstname" class="form-label">Όνομα:</label>
+               <input
+               id="firstname"
+               type="text"
+               formControlName="firstname"
+               class="form-control"
+               [ngClass]="{ 'is-invalid': coachForm.get('firstname')?.invalid && coachForm.get('firstname')?.touched }"
+               />
+               <div *ngIf="coachForm.get('firstname')?.invalid && coachForm.get('firstname')?.touched" class="invalid-feedback">
+               Το όνομα είναι υποχρεωτικό.
+               </div>
+          </div>
+      
+          <div class="mb-3">
+               <label for="lastname" class="form-label">Επώνυμο:</label>
+               <input
+               id="lastname"
+               type="text"
+               formControlName="lastname"
+               class="form-control"
+               [ngClass]="{ 'is-invalid': coachForm.get('lastname')?.invalid && coachForm.get('lastname')?.touched }"
+               />
+               <div *ngIf="coachForm.get('lastname')?.invalid && coachForm.get('lastname')?.touched" class="invalid-feedback">
+                    Το επώνυμο είναι υποχρεωτικό.
+               </div>
+          </div>
+      
+          <div *ngIf="userRole == 'Admin'" class="mb-3">
+               <label for="role" class="form-label">Ρόλος:</label>
+               <select
+               id="role"
+               class="form-select"
+               [class.is-invalid]="coachForm.get('role')?.invalid && coachForm.get('role')?.touched"
+               formControlName="role"
+               >
+               <option value="" disabled>Επιλέξτε ρόλο</option>
+               <option value="Admin">Admin</option>
+               <option value="HipHop_Coach">HipHop_Coach</option>
+               <option value="Latin_Coach">Latin_Coach</option>
+               <option value="Zumba_Coach">Zumba_Coach</option>
+               
+               </select>
+               <div *ngIf="coachForm.get('role')?.invalid && coachForm.get('role')?.touched" class="invalid-feedback">
+                    Ο ρόλος είναι υποχρεωτικός.
+               </div>
+          </div>
+          <div formGroupName="contactDetailsUpdateDTO">
+      
+               <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input
+                         id="email"
+                         type="email"
+                         formControlName="email"
+                         class="form-control"
+                         
+                         [class.is-invalid]="coachForm.get('email')?.invalid && coachForm.get('email')?.touched"
+                    />
+                    <div *ngIf="coachForm.get('contactDetailsUpdateDTO.email')?.invalid && coachForm.get('contactDetailsUpdateDTO.email')?.touched" class="invalid-feedback">
+                    Παρακαλώ εισάγετε έγκυρη διεύθυνση email.
+                    </div>
+               </div>
+
+               <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Τηλέφωνο:</label>
+                    <input
+                    id="phoneNumber"
+                    type="text"
+                    formControlName="phoneNumber"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': coachForm.get('contactDetailsUpdateDTO.phoneNumber')?.invalid && coachForm.get('contactDetailsUpdateDTO.phoneNumber')?.touched }"
+                    />
+                    <div *ngIf="coachForm.get('contactDetailsUpdateDTO.phoneNumber')?.invalid && coachForm.get('contactDetailsUpdateDTO.phoneNumber')?.touched" class="invalid-feedback">
+                    Παρακαλώ εισάγετε έγκυρο αριθμό τηλεφώνου.
+                    </div>
+               </div>
+      
+               <div class="mb-3">
+                    <label for="city" class="form-label">Πόλη:</label>
+                    <input
+                    id="city"
+                    type="text"
+                    formControlName="city"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': coachForm.get('contactDetailsUpdateDTO.city')?.invalid && coachForm.get('contactDetailsUpdateDTO.city')?.touched }"
+                    />
+                    <div *ngIf="coachForm.get('contactDetailsUpdateDTO.city')?.invalid && coachForm.get('contactDetailsUpdateDTO.city')?.touched" class="invalid-feedback">
+                    Η πόλη είναι υποχρεωτική.
+                    </div>
+               </div>
+      
+               <div class="mb-3">
+                    <label for="road" class="form-label">Διεύθυνση:</label>
+                    <input
+                    id="road"
+                    type="text"
+                    formControlName="road"
+                    class="form-control"
+                    />
+               </div>
+      
+               <div class="mb-3">
+                    <label for="road_number" class="form-label">Αριθμός:</label>
+                    <input
+                    id="road_number"
+                    type="text"
+                    formControlName="road_number"
+                    class="form-control"
+                    />
+               </div>
+      
+               <div class="mb-3">
+                    <label for="postalCode" class="form-label">Ταχυδρομικός Κώδικας:</label>
+                    <input
+                    id="postalCode"
+                    type="text"
+                    formControlName="postalCode"
+                    class="form-control"
+                    />
+               </div>
+          </div>
+            
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-light w-48" [disabled]="coachForm.invalid">Ενημέρωση</button>
+            <button type="button" class="btn btn-secondary w-48" (click)="onCancel()">Ακύρωση</button>
+          </div>
+     </form>
+</div>

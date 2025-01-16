@@ -1,0 +1,17 @@
+body {
+    background-color: black; /* Μαύρο φόντο */
+    color: white; /* Άσπρο κείμενο */
+  }
+  
+  .card {
+    background-color: black;
+    border-color: rgb(220, 53, 69); /* Χρώμα στα όρια της κάρτας */
+  }
+  
+  .form-control.is-invalid {
+    border-color: rgb(220, 53, 69);
+  }
+  
+  .text-danger {
+    color: rgb(220, 53, 69) !important;
+  }

@@ -1,0 +1,57 @@
+
+.sidebar {
+   
+    color: #fff;
+    width: 260px;
+    padding: 15px;
+ 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Απόκρυψη Sidebar σε μικρές οθόνες */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      display: none;
+    }
+  }
+
+  .logo-container {
+    padding: 10px 0;
+    max-width: 150px;  
+    margin: 0 auto;
+    
+  }
+  
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Links Styling */
+  .sidebar .list-group-item,
+  .offcanvas .list-group-item {
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    border-radius: 6px;
+  }
+  
+  .sidebar .list-group-item:hover,
+  .offcanvas .list-group-item:hover {
+    background-color: rgb(31, 30, 30);
+    color: rgb(255, 255, 255);
+    cursor:pointer;
+  }
+  
+  .sidebar .list-group-item.active,
+  .offcanvas .list-group-item.active {
+    background-color: #141414;
+    font-weight: bold;
+    color: rgb(220, 53, 69);
+    border: 1px solid #fff;
+  }
+  

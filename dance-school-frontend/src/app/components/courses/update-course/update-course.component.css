@@ -1,0 +1,9 @@
+.invalid-feedback {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+  
+  button:disabled {
+    background-color: rgb(220, 53, 69);
+    color: white;
+  }

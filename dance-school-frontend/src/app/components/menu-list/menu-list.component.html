@@ -1,0 +1,102 @@
+<!-- Sidebar (Offcanvas για μικρές οθόνες) -->
+<div
+  class="offcanvas offcanvas-start bg-danger"
+  tabindex="-1"
+  id="offcanvasSidebar"
+  aria-labelledby="offcanvasSidebarLabel"
+>
+     <div class="offcanvas-header">
+    
+          <button
+               type="button"
+               class="btn-close text-reset"
+               data-bs-dismiss="offcanvas"
+               aria-label="Close"
+          ></button>
+     </div>
+
+     <div class="offcanvas-body">
+          <div class="list-group">
+               <div class="logo-container text-center mb-3 width:10">
+                    <img src="assets/img/dance2impress.png" alt="Dance2Impress Logo" class="logo" />
+               </div>
+               <ng-container *ngFor="let category of menu;">
+            
+                    <ng-container *ngIf="!category.children; else hasChildren">
+                         <a
+                              class="list-group-item list-group-item-action fw-bold text-white"
+                              [routerLink]="category.routerLink"
+                              [routerLinkActive]="'active'"
+                         >
+                              {{ category.text }}
+                         </a>
+                    </ng-container>
+                    <ng-template #hasChildren>
+                         <a
+                              *ngIf="showMenu(category)"
+                              class="list-group-item list-group-item-action fw-bold text-white"
+                              (click)="category.open = !category.open"
+                              [ngClass]="{ 'active': category.open }"
+                         >
+                              {{ category.text }}
+                         </a>
+                         <div class="sub-menu ms-3" *ngIf="category.open && category.children">
+                              <ng-container *ngFor="let subItem of category.children">
+                                   <a
+                                        *ngIf="showMenu(subItem)"
+                                        class="list-group-item list-group-item-action text-white"
+                                        [routerLink]="subItem.routerLink"
+                                        [routerLinkActive]="'active'"
+                                   >
+                                        {{ subItem.text }}
+                                   </a>
+                              </ng-container>
+                         </div>
+                    </ng-template>
+               </ng-container>
+          </div>
+     </div>
+</div>
+
+<!-- Sidebar (Desktop Only) -->
+<div class="sidebar d-none d-lg-block">
+     <div class="list-group bg-danger pb-5">
+          
+          <div class="logo-container text-center mb-3">
+               <img src="assets/img/dance2impress.png" alt="Dance2Impress Logo" class="logo" />
+          </div>
+          <ng-container *ngFor="let category of menu;">
+               <ng-container *ngIf="!category.children; else hasChildren">
+                    <a
+                         class="list-group-item list-group-item-action fw-bold text-white"
+                         [routerLink]="category.routerLink"
+                         [routerLinkActive]="'active'"
+                    >
+                         {{ category.text }}
+                    </a>
+               </ng-container>
+               <ng-template #hasChildren >
+                    <a
+                         *ngIf="showMenu(category)"
+                         class="list-group-item list-group-item-action fw-bold text-white"
+                         (click)="category.open = !category.open"
+                         [ngClass]="{ 'active': category.open }"
+                    >
+                         {{ category.text }}
+                    </a>
+                    <div class="sub-menu ms-3" *ngIf="category.open && category.children">
+                         <ng-container *ngFor="let subItem of category.children">
+                              <a
+                                   *ngIf="showMenu(subItem)"
+                                   class="list-group-item list-group-item-action text-white"
+                                   [routerLink]="subItem.routerLink"
+                                   [routerLinkActive]="'active'"
+                              >
+                                   {{ subItem.text }}
+                              </a>
+                         </ng-container>
+                    </div>
+               </ng-template>
+          </ng-container>
+     </div>
+</div>

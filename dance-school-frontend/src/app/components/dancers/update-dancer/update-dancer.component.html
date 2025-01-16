@@ -1,0 +1,227 @@
+<div class="container mt-3">
+     <h2 class="text-center mb-4" style="color: rgb(220, 53, 69);">Ενημέρωση Προπονητή</h2>
+   
+     <form [formGroup]="dancerForm" (ngSubmit)="onSubmit()">
+   
+          <div class="mb-3">
+               <label for="firstname" class="form-label">Όνομα:</label>
+               <input
+                    id="firstname"
+                    type="text"
+                    formControlName="firstname"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': dancerForm.get('firstname')?.invalid && dancerForm.get('firstname')?.touched }"
+               />
+               <div *ngIf="dancerForm.get('firstname')?.invalid && dancerForm.get('firstname')?.touched" class="invalid-feedback">
+                    Το όνομα είναι υποχρεωτικό.
+               </div>
+          </div>
+   
+         <!-- Επώνυμο -->
+          <div class="mb-3">
+               <label for="lastname" class="form-label">Επώνυμο:</label>
+               <input
+                    id="lastname"
+                    type="text"
+                    formControlName="lastname"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': dancerForm.get('lastname')?.invalid && dancerForm.get('lastname')?.touched }"
+                    />
+               <div *ngIf="dancerForm.get('lastname')?.invalid && dancerForm.get('lastname')?.touched" class="invalid-feedback">
+                    Το επώνυμο είναι υποχρεωτικό.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="dateOfBirth" class="form-label">Ημερομηνία Γέννησης:</label>
+               <input
+                    id="dateOfBirth"
+                    type="date"
+                    formControlName="dateOfBirth"
+                    class="form-control"
+                    
+                    [class.is-invalid]="dancerForm.get('dateOfBirth')?.invalid && dancerForm.get('dateOfBirth')?.touched"
+               />
+               <div *ngIf="dancerForm.get('dateOfBirth')?.invalid && dancerForm.get('dateOfBirth')?.touched" class="invalid-feedback">
+               Η Ημερομηνία Γέννησης είναι υποχρεωτική.
+               </div>
+          </div>
+
+          <div class="mb-3">
+                    <label for="gender" class="form-label">Φύλο:</label>
+               <select
+                    id="gender"
+                    class="form-select"
+                    [class.is-invalid]="dancerForm.get('gender')?.invalid && dancerForm.get('gender')?.touched"
+                    formControlName="gender"
+               >
+               <option value="" disabled>Επιλέξτε Φύλο</option>
+               <option value="Male">Άνδρας</option>
+               <option value="Female">Γυναίκα</option>
+               <option value="Other">Αλλο</option>
+               
+               </select>
+               <div *ngIf="dancerForm.get('gender')?.invalid && dancerForm.get('gender')?.touched" class="invalid-feedback">
+                    Το φύλο είναι υποχρεωτικό.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="contractEnd" class="form-label">Λήξη Συμβολαίου:</label>
+               <input
+                    id="contractEnd"
+                    type="date"
+                    formControlName="contractEnd"
+                    class="form-control"
+                    
+               />
+          </div>
+          <div formGroupName="contactDetailsUpdateDTO">
+               <div class="mb-3">
+                    <label for="email" class="form-label">Ημερομηνία Γέννησης:</label>
+                    <input
+                    id="email"
+                    type="email"
+                    formControlName="email"
+                    class="form-control"
+                    
+                    [class.is-invalid]="dancerForm.get('email')?.invalid && dancerForm.get('email')?.touched"
+                    />
+                    <div *ngIf="dancerForm.get('contactDetailsInsertDTO.email')?.invalid && dancerForm.get('contactDetailsInsertDTO.email')?.touched" class="invalid-feedback">
+                         Το email είναι υποχρεωτικό
+                    </div>
+               </div>
+   
+               <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Τηλέφωνο:</label>
+                    <input
+                    id="phoneNumber"
+                    type="text"
+                    formControlName="phoneNumber"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': dancerForm.get('contactDetailsInsertDTO.phoneNumber')?.invalid && dancerForm.get('contactDetailsInsertDTO.phoneNumber')?.touched }"
+                    />
+                    <div *ngIf="dancerForm.get('contactDetailsInsertDTO.phoneNumber')?.invalid && dancerForm.get('contactDetailsInsertDTO.phoneNumber')?.touched" class="invalid-feedback">
+                    Παρακαλώ εισάγετε έγκυρο αριθμό τηλεφώνου.
+                    </div>
+               </div>
+     
+               <div class="mb-3">
+                    <label for="city" class="form-label">Πόλη:</label>
+                    <input
+                    id="city"
+                    type="text"
+                    formControlName="city"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': dancerForm.get('contactDetailsInsertDTO.city')?.invalid && dancerForm.get('contactDetailsInsertDTO.city')?.touched }"
+                    />
+                    <div *ngIf="dancerForm.get('contactDetailsInsertDTO.city')?.invalid && dancerForm.get('contactDetailsInsertDTO.city')?.touched" class="invalid-feedback">
+                    Η πόλη είναι υποχρεωτική.
+                    </div>
+               </div>
+     
+               <div class="mb-3">
+                    <label for="road" class="form-label">Διεύθυνση:</label>
+                    <input
+                    id="road"
+                    type="text"
+                    formControlName="road"
+                    class="form-control"
+                    />
+               </div>
+     
+               <div class="mb-3">
+                    <label for="road_number" class="form-label">Αριθμός:</label>
+                    <input
+                    id="road_number"
+                    type="text"
+                    formControlName="road_number"
+                    class="form-control"
+                    />
+               </div>
+     
+               <div class="mb-3">
+                    <label for="postalCode" class="form-label">Ταχυδρομικός Κώδικας:</label>
+                    <input
+                    id="postalCode"
+                    type="text"
+                    formControlName="postalCode"
+                    class="form-control"
+                    />
+               </div>
+          </div>
+          <div *ngIf="guardianInfo" formGroupName="guardianUpdateDTO">
+               <h4 class="text-center mb-4" style="color: rgb(220, 53, 69);">Ενημέρωση Κηδεμόνα</h4>
+               <div class="mb-3">
+                    <label for="firstname" class="form-label">Όνομα:</label>
+                    <input
+                         id="firstname"
+                         type="text"
+                         formControlName="firstname"
+                         class="form-control"
+                         [ngClass]="{ 'is-invalid': dancerForm.get('firstname')?.invalid && dancerForm.get('firstname')?.touched }"
+                    />
+                    <div *ngIf="dancerForm.get('firstname')?.invalid && dancerForm.get('firstname')?.touched" class="invalid-feedback">
+                         Το όνομα είναι υποχρεωτικό.
+                    </div>
+               </div>
+        
+              <!-- Επώνυμο -->
+               <div class="mb-3">
+                    <label for="lastname" class="form-label">Επώνυμο:</label>
+                    <input
+                         id="lastname"
+                         type="text"
+                         formControlName="lastname"
+                         class="form-control"
+                         [ngClass]="{ 'is-invalid': dancerForm.get('lastname')?.invalid && dancerForm.get('lastname')?.touched }"
+                         />
+                    <div *ngIf="dancerForm.get('lastname')?.invalid && dancerForm.get('lastname')?.touched" class="invalid-feedback">
+                         Το επώνυμο είναι υποχρεωτικό.
+                    </div>
+               </div>
+          </div>
+          <div>
+               <div [formGroup]="dancerForm">
+                    <label for="courses" class="form-label text-white">Μαθήματα</label>
+                    <div>Επιλεξτε ενα η περισοτερα νεα μαθηματα απο την λιστα </div>
+                    <select
+                      id="courses"
+                      class="form-select"
+                      formControlName="courseIds" 
+                      multiple  
+                    >
+                         <option *ngFor="let course of courses" [value]="course.id">
+                         {{course.id}} {{course.name}} {{course.day}} {{course.startTime}} - {{course.endTime}}
+                         </option>
+                         
+                    </select>
+               </div>
+                  
+                  <!-- Εμφάνιση των επιλεγμένων IDs -->
+               <div *ngIf="hasNoSelectedCourses">
+                    
+                    <div *ngFor="let course of data.courseList">
+                         <p>id: {{ course.id }} | name: {{ course.name }}</p>
+                    </div>
+               </div>
+               
+               <div *ngIf="!hasNoSelectedCourses">
+                    <div class="d-flex">
+                         <div>Επιλεγμένα Νέα Μαθήματα:IDs: </div>
+                         <div *ngFor="let courseId of dancerForm.get('courseIds')?.value">
+                              <p> <strong>{{ courseId }}</strong>,</p>
+                         </div>
+
+                    </div>
+                   
+               </div>
+          </div>
+               
+          <div class="d-flex justify-content-between mb-2">
+               <button type="submit" class="btn btn-danger w-48" [disabled]="dancerForm.invalid" >Ενημέρωση</button>
+               <button type="button" class="btn btn-secondary w-48" (click)="onCancel()">Ακύρωση</button>
+          </div>
+     </form>
+</div>
+

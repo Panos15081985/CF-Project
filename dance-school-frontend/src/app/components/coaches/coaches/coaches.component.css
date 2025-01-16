@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+     .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+     }
+     .contact-info .col-4 {
+        flex: 0 0 100%; /* Κάνει κάθε στοιχείο να παίρνει το 100% του πλάτους στις μικρές οθόνες */
+        margin-bottom: 10px; /* Απόσταση ανάμεσα στα στοιχεία */
+     }
+}
+
+.course-list{
+    
+     display: inline-flex;
+     
+     
+     
+
+}
+.klasse{
+    
+     padding: 10px;
+}

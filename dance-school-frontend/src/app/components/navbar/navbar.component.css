@@ -1,0 +1,54 @@
+/* Brand Styling */
+.artistic-text {
+  font-family: 'Cursive', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  padding-left: 30px;
+}
+
+.artistic-text .highlight {
+  color: #000;
+  background-color: #fff;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+/* Navbar Shadow */
+.navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Ενίσχυση της σκιάς */
+  z-index: 1040; /* Εξασφαλίζει ότι εμφανίζεται πάνω από το sidebar */
+}
+
+/* Buttons */
+.btn {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btn-light {
+  color: #000; /* Μαύρο κείμενο */
+  border: 1px solid #fff; /* Λευκό περίγραμμα */
+}
+
+.btn-outline-light {
+  border: 1px solid #fff; /* Λευκό περίγραμμα */
+}
+
+.btn:hover {
+  background-color: #fff; /* Hover με λευκό */
+  color: #000; /* Μαύρο κείμενο */
+}
+
+/* Toggler Icon */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23ffffff' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler:hover {
+  background-color: #000000;
+}
+

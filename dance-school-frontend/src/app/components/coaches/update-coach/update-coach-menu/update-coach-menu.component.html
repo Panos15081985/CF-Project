@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  
+     <div class="card mb-3 shadow" style="border: 1px solid rgb(220, 53, 69);">
+          <div
+               class="card-header d-flex justify-content-between align-items-center"
+               style="background-color: rgb(220, 53, 69); color: white; cursor: pointer;"
+               (click)="toggleForm('contactDetails')"
+          >
+               <span class="fw-bold">Ενημέρωση Προπονητή</span>
+               <span
+               [ngClass]="{ 'bi-chevron-down': showContactDetails, 'bi-chevron-right': !showContactDetails }"
+               class="bi"
+               style="font-size: 1.5rem;"
+               ></span>
+          </div>
+          <div
+               *ngIf="showContactDetails"
+               [@slideToggle]
+               class="card-body"
+               style="background-color: white; color: black;"
+          >
+               <app-update-coach-contact-details></app-update-coach-contact-details>
+          </div>
+     </div>
+
+  <!-- Update Coach Credentials -->
+     <div class="card mb-3 shadow" style="border: 1px solid rgb(220, 53, 69);">
+          <div
+               class="card-header d-flex justify-content-between align-items-center"
+               style="background-color: rgb(220, 53, 69); color: white; cursor: pointer;"
+               (click)="toggleForm('credentials')"
+          >
+               <span class="fw-bold">Αλλαγή Κωδικών</span>
+               <span
+               [ngClass]="{ 'bi-chevron-down': showCredentials, 'bi-chevron-right': !showCredentials }"
+               class="bi"
+               style="font-size: 1.5rem;"
+               ></span>
+          </div>
+          <div
+               *ngIf="showCredentials"
+               [@slideToggle]
+               class="card-body"
+               style="background-color: white; color: black;"
+          >
+               <app-update-credential></app-update-credential>
+          </div>
+     </div>
+</div>

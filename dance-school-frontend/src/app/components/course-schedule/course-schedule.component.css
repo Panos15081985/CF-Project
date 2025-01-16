@@ -1,0 +1,61 @@
+.custom-table {
+    background-color: #fff; /* Λευκό background */
+    border: 1px solid #dee2e6; /* Απαλό περίγραμμα */
+  }
+  
+  .custom-table thead {
+    background-color: rgb(220, 53, 69); /* Κόκκινη κεφαλίδα */
+    color: #fff; /* Λευκά γράμματα */
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: #f8f9fa; /* Απαλό γκρι για hover */
+  }
+  
+  .custom-table td,
+  .custom-table th {
+    text-align: center; /* Κεντράρισμα περιεχομένου */
+    vertical-align: middle;
+  }
+  
+  h3.text-danger {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .card {
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid rgb(220, 53, 69);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 450px;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .card-title {
+    font-weight: bold;
+    color: rgb(220, 53, 69); 
+  }
+  
+  .card-text {
+    color: #212529; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    
+  }
+  
+  .card-footer {
+    font-size: 0.9rem;
+    background-color: #f8f9fa; 
+  }
+  
+  h3.text-danger {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(220, 53, 69);
+  }
+

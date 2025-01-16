@@ -1,0 +1,95 @@
+<div class="container mt-4 p-4 border-dark bg-light">
+     <h2 class="text-center mb-4 text-danger">Φόρμα Μαθήματος</h2>
+     <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+
+          <div class="mb-3">
+               <label for="name" class="form-label">Όνομα</label>
+               <input
+               type="text"
+               id="name"
+               class="form-control border-dark"
+               [class.is-invalid]="courseForm.get('name')?.invalid && courseForm.get('name')?.touched"
+               formControlName="name"
+               />
+               <div *ngIf="courseForm.get('name')?.invalid && courseForm.get('name')?.touched" class="invalid-feedback" style="color: rgb(220, 53, 69);">
+               Το όνομα είναι υποχρεωτικό.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="description" class="form-label">Περιγραφή</label>
+               <textarea
+               id="description"
+               class="form-control border-dark"
+               rows="3"
+               [class.is-invalid]="courseForm.get('description')?.invalid && courseForm.get('description')?.touched"
+               formControlName="description"
+               ></textarea>
+               <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched" class="invalid-feedback" style="color: rgb(220, 53, 69);">
+               Η περιγραφή είναι υποχρεωτική.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="day" class="form-label">Ημέρα</label>
+               <select
+               id="day"
+               class="form-select border-dark"
+               [class.is-invalid]="courseForm.get('day')?.invalid && courseForm.get('day')?.touched"
+               formControlName="day"
+               >
+               <option value="" disabled selected>Επιλέξτε ημέρα</option>
+               <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+               </select>
+               <div *ngIf="courseForm.get('day')?.invalid && courseForm.get('day')?.touched" class="invalid-feedback" style="color: rgb(220, 53, 69);">
+               Η ημέρα είναι υποχρεωτική.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="startTime" class="form-label">Ώρα Έναρξης</label>
+               <input
+               type="time"
+               id="startTime"
+               class="form-control border-dark"
+               [class.is-invalid]="courseForm.get('startTime')?.invalid && courseForm.get('startTime')?.touched"
+               formControlName="startTime"
+               />
+               <div *ngIf="courseForm.get('startTime')?.invalid && courseForm.get('startTime')?.touched" class="invalid-feedback" style="color: rgb(220, 53, 69);">
+               Η ώρα έναρξης είναι υποχρεωτική.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="endTime" class="form-label">Ώρα Λήξης</label>
+               <input
+               type="time"
+               id="endTime"
+               class="form-control border-dark"
+               [class.is-invalid]="courseForm.get('endTime')?.invalid && courseForm.get('endTime')?.touched"
+               formControlName="endTime"
+               />
+               <div *ngIf="courseForm.get('endTime')?.invalid && courseForm.get('endTime')?.touched" class="invalid-feedback" style="color: rgb(220, 53, 69);">
+               Η ώρα λήξης είναι υποχρεωτική.
+               </div>
+          </div>
+
+          <div class="mb-3">
+               <label for="coach" class="form-label">Προπονητής</label>
+               <select
+               id="coach"
+               class="form-select border-dark"
+               [class.is-invalid]="courseForm.get('coachUuid')?.invalid && courseForm.get('coachUuid')?.touched"
+               formControlName="coachUuid"
+               >
+               <option value="" disabled selected>Επιλέξτε προπονητή</option>
+               <option *ngFor="let coach of coaches" [value]="coach.uuid">{{ coach.firstname }} {{coach.lastname}}</option>
+               </select>
+               <div *ngIf="courseForm.get('coachUuid')?.invalid && courseForm.get('coachUuid')?.touched" class="invalid-feedback" style="color: rgb(220, 53, 69);">
+               Ο προπονητής είναι υποχρεωτικός.
+               </div>
+          </div>
+
+          <button type="submit" class="btn btn-light w-100" [disabled]="courseForm.invalid">Υποβολή</button>
+     </form>
+</div>
