@@ -12,9 +12,19 @@ h6.text-danger {
      font-weight: bold;
 }
 
+
 @media (max-width: 768px) {
      .col-md-4 {
           flex: 0 0 100%;
           max-width: 100%;
      }
+
+     .label{
+          width: 90%;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          white-space: normal;   
+     }
+
+  
 }

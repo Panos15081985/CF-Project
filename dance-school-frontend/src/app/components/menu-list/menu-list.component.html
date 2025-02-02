@@ -27,6 +27,7 @@
                               class="list-group-item list-group-item-action fw-bold text-white"
                               [routerLink]="category.routerLink"
                               [routerLinkActive]="'active'"
+                              (click)="closeOffcanvas()"
                          >
                               {{ category.text }}
                          </a>
@@ -47,6 +48,7 @@
                                         class="list-group-item list-group-item-action text-white"
                                         [routerLink]="subItem.routerLink"
                                         [routerLinkActive]="'active'"
+                                        (click)="closeOffcanvas()"
                                    >
                                         {{ subItem.text }}
                                    </a>

@@ -14,9 +14,9 @@ const API_URL = environment.apiURL;
   providedIn: 'root'
 })
 export class CoachService {
-  http: HttpClient = inject(HttpClient)
-  router = inject(Router)
-  user = signal<LoggedInUser | null>(null)
+     http: HttpClient = inject(HttpClient)
+     router = inject(Router)
+     user = signal<LoggedInUser | null>(null)
  
      constructor() { 
           const access_token = localStorage.getItem("access_token")

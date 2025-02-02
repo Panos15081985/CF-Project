@@ -3,6 +3,7 @@ import { MenuEntry } from '../../shared/interface/menu-entry';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CoachService } from '../../shared/services/coach.service';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-menu-list',
@@ -13,6 +14,7 @@ import { CoachService } from '../../shared/services/coach.service';
 })
 export class MenuListComponent {
      coachService = inject(CoachService)
+  
 
      menu = [
           {text: "Πρόγραμμα Μαθημάτων", open:false, routerLink: "course-schedule"},
@@ -37,4 +39,14 @@ export class MenuListComponent {
       
           return this.coachService.hasAnyRole(item.roles);
      }
+
+     closeOffcanvas() {
+          const offcanvasElement = document.getElementById('offcanvasSidebar');
+          if (offcanvasElement) {
+            let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+            if (bsOffcanvas) {
+              bsOffcanvas.hide();
+            }
+          }
+        }
 }
